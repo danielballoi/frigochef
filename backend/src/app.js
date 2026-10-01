@@ -5,12 +5,13 @@ import { errorHandler, notFoundHandler, HttpError } from './errors.js';
 import { healthRouter } from './routes/health.js';
 import { configRouter } from './routes/config.js';
 import { recipesRouter } from './routes/recipes.js';
+import { modelHealthRouter, recognizeRouter } from './routes/recognize.js';
 
 /**
  * Crea l'applicazione Express. Le dipendenze arrivano da fuori,
  * così i test possono sostituirle.
  */
-export function createApp({ config, logger, repository }) {
+export function createApp({ config, logger, repository, vision }) {
   const app = express();
   app.disable('x-powered-by');
   app.set('trust proxy', 1);
@@ -21,6 +22,7 @@ export function createApp({ config, logger, repository }) {
 
   const api = express.Router();
   api.use(healthRouter({ isReady: () => Boolean(repository?.isLoaded()) }));
+  if (vision) api.use(modelHealthRouter({ vision }));
   api.use(configRouter({ config }));
 
   // Le route seguenti hanno bisogno dell'archivio caricato.
@@ -31,6 +33,7 @@ export function createApp({ config, logger, repository }) {
     next();
   });
   api.use(recipesRouter({ repository }));
+  if (vision) api.use(recognizeRouter({ config, vision }));
   app.use('/api', api);
 
   app.use(notFoundHandler);

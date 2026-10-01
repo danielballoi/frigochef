@@ -13,11 +13,12 @@ export function createLogger(level = 'info') {
 /**
  * Middleware: una riga di log per richiesta con metodo, percorso, stato e durata.
  * Le route possono aggiungere campi in res.locals.logFields (es. modello e durata del riconoscimento).
+ * Non registra mai corpo della richiesta, query o immagini.
  */
 export function requestLogger(logger) {
   return (req, res, next) => {
     const start = process.hrtime.bigint();
-    res.on('finish', () => {
+    res.on('close', () => {
       const durationMs = Number(process.hrtime.bigint() - start) / 1e6;
       const fields = {
         method: req.method,
@@ -26,6 +27,7 @@ export function requestLogger(logger) {
         durationMs: Math.round(durationMs * 10) / 10,
         ...res.locals.logFields,
       };
+      if (!res.writableFinished) fields.aborted = true;
       const level = res.statusCode >= 500 ? 'error' : res.statusCode >= 400 ? 'warn' : 'info';
       logger[level](fields, 'request');
     });

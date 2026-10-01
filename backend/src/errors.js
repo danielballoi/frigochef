@@ -33,7 +33,8 @@ export function errorHandler(logger) {
     }
 
     if (status >= 500) {
-      logger.error({ err: { name: err.name, message: err.message, code: err.code }, path: req.path }, 'errore');
+      const cause = err.cause ? String(err.cause.message ?? err.cause).slice(0, 300) : undefined;
+      logger.error({ err: { name: err.name, code: err.code, message: err.message, cause }, path: req.originalUrl.split('?')[0] }, 'errore');
     }
     res.status(status).json({ error: { code, message } });
   };

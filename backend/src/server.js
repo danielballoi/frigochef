@@ -2,6 +2,7 @@ import { loadConfig, ConfigError } from './config.js';
 import { createLogger } from './logger.js';
 import { createApp } from './app.js';
 import { createRecipeRepository } from './recipes/recipeRepository.js';
+import { createVisionProvider } from './vision/index.js';
 
 const SHUTDOWN_TIMEOUT_MS = 5000;
 
@@ -19,10 +20,11 @@ function start() {
 
   const logger = createLogger(config.logLevel);
   const repository = createRecipeRepository();
-  const app = createApp({ config, logger, repository });
+  const vision = createVisionProvider(config, repository);
+  const app = createApp({ config, logger, repository, vision });
 
   const server = app.listen(config.port, () => {
-    logger.info({ port: config.port, visionProvider: config.visionProvider }, 'server avviato');
+    logger.info({ port: config.port, visionProvider: config.visionProvider, visionModel: vision.model }, 'server avviato');
   });
 
   repository
