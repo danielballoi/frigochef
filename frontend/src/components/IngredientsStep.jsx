@@ -14,7 +14,7 @@ export default function IngredientsStep({
 }) {
   return (
     <section aria-labelledby="titolo-ingredienti">
-      <h2 id="titolo-ingredienti">Cosa c'è nel frigo</h2>
+      <h2 id="titolo-ingredienti" tabIndex={-1}>Cosa c'è nel frigo</h2>
       <p className="small muted">
         Controlla la lista: tocca ✕ per togliere ciò che è sbagliato e aggiungi ciò che manca.
       </p>

@@ -314,6 +314,16 @@ describe('ingredienti, dispensa e ricette', () => {
   });
 });
 
+describe('accessibilità', () => {
+  it('a ogni cambio di schermata il focus va sul titolo', async () => {
+    installFakeBackend();
+    const user = userEvent.setup();
+    render(<App />);
+    await user.click(screen.getByRole('button', { name: 'Preferisco scrivere gli ingredienti a mano' }));
+    expect(await screen.findByRole('heading', { name: "Cosa c'è nel frigo" })).toHaveFocus();
+  });
+});
+
 describe('privacy', () => {
   it('mostra l\'informativa sulle foto', () => {
     installFakeBackend();

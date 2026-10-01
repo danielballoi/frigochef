@@ -13,7 +13,7 @@ export default function AnalysisStep({ shelves, currentShelfId, running, onRetry
 
   return (
     <section aria-labelledby="titolo-analisi">
-      <h2 id="titolo-analisi">Analisi delle foto</h2>
+      <h2 id="titolo-analisi" tabIndex={-1}>Analisi delle foto</h2>
 
       {running && (
         <div className="waiting" role="status" aria-live="polite">

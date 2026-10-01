@@ -33,6 +33,8 @@ export default function App() {
   const [recipes, setRecipes] = useState({ status: 'idle', list: [], error: null });
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const abortRef = useRef(null);
+  const mainRef = useRef(null);
+  const firstScreenRef = useRef(true);
 
   const pantryItems = pantry ?? config.pantryDefault;
 
@@ -58,6 +60,15 @@ export default function App() {
       });
     return () => controller.abort();
   }, []);
+
+  // A ogni cambio di schermata il focus va sul titolo: chi usa uno screen reader sente dove si trova.
+  useEffect(() => {
+    if (firstScreenRef.current) {
+      firstScreenRef.current = false;
+      return;
+    }
+    mainRef.current?.querySelector('h2')?.focus();
+  }, [screen]);
 
   // ---- Foto ----
 
@@ -198,7 +209,7 @@ export default function App() {
   return (
     <div className="app">
       <Header onReset={reset} showReset={!pristine} />
-      <main className="content" id="contenuto">
+      <main className="content" id="contenuto" ref={mainRef}>
         {screen === 'photos' && (
           <PhotoStep
             shelves={shelves}

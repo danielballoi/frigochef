@@ -18,7 +18,8 @@ function FileButton({ label, ariaLabel, capture, onPick, className = 'btn btn-se
   );
 }
 
-export default function ShelfCard({ label, shelf, onPick, onRemove }) {
+/** `canRemoveEmpty`: un riquadro vuoto si può togliere solo se non è l'unico. */
+export default function ShelfCard({ label, shelf, onPick, onRemove, canRemoveEmpty = true }) {
   const hasPhoto = shelf.status === 'ready' && shelf.previewUrl;
 
   return (
@@ -58,9 +59,11 @@ export default function ShelfCard({ label, shelf, onPick, onRemove }) {
               className="btn btn-primary"
             />
             <FileButton label="🖼️ Galleria" ariaLabel={`Scegli dalla galleria per ${label}`} onPick={onPick} />
-            <button type="button" className="btn btn-ghost" onClick={onRemove} aria-label={`Togli ${label}`}>
-              ✕
-            </button>
+            {canRemoveEmpty && (
+              <button type="button" className="btn btn-ghost btn-icon" onClick={onRemove} aria-label={`Togli ${label}`}>
+                ✕
+              </button>
+            )}
           </>
         )}
       </div>

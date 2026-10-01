@@ -6,7 +6,7 @@ function MissingBadge({ missing }) {
 export default function RecipesStep({ state, onOpen, onRetry, onBack }) {
   return (
     <section aria-labelledby="titolo-ricette">
-      <h2 id="titolo-ricette">Cosa puoi cucinare</h2>
+      <h2 id="titolo-ricette" tabIndex={-1}>Cosa puoi cucinare</h2>
 
       {state.status === 'loading' && (
         <p role="status" className="waiting-title">

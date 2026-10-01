@@ -604,3 +604,13 @@ label.btn:focus-within {
     padding-inline: 1.5rem;
   }
 }
+
+.shelf-buttons .btn-icon {
+  flex: 0 0 var(--tap);
+  padding: 0;
+}
+
+/* Il titolo riceve il focus a ogni cambio di schermata (per gli screen reader): niente contorno visivo. */
+h2[tabindex='-1']:focus {
+  outline: none;
+}

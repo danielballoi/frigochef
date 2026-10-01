@@ -6,7 +6,7 @@ export default function RecipeDetail({ recipe, onBack }) {
       <button type="button" className="btn btn-link" onClick={onBack}>
         ← Torna alle ricette
       </button>
-      <h2 id="titolo-ricetta">{recipe.nome}</h2>
+      <h2 id="titolo-ricetta" tabIndex={-1}>{recipe.nome}</h2>
       <p className="recipe-meta">
         <span>⏱ {recipe.tempoMinuti} minuti</span>
         <span>👥 {recipe.porzioni} {recipe.porzioni === 1 ? 'porzione' : 'porzioni'}</span>

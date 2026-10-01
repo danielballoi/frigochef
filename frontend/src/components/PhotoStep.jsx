@@ -7,7 +7,7 @@ export default function PhotoStep({ shelves, maxPhotos, onAdd, onPick, onRemove,
 
   return (
     <section aria-labelledby="titolo-foto">
-      <h2 id="titolo-foto">Fotografa il frigo</h2>
+      <h2 id="titolo-foto" tabIndex={-1}>Fotografa il frigo</h2>
       <p className="hint">💡 Fotografa ogni ripiano da vicino, anche cassetti e sportello.</p>
 
       <ol className="shelves">
@@ -16,6 +16,7 @@ export default function PhotoStep({ shelves, maxPhotos, onAdd, onPick, onRemove,
             <ShelfCard
               label={`Ripiano ${index + 1}`}
               shelf={shelf}
+              canRemoveEmpty={shelves.length > 1}
               onPick={(file) => onPick(shelf.id, file)}
               onRemove={() => onRemove(shelf.id)}
             />
