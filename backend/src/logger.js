@@ -21,7 +21,7 @@ export function requestLogger(logger) {
       const durationMs = Number(process.hrtime.bigint() - start) / 1e6;
       const fields = {
         method: req.method,
-        path: req.originalUrl.split("?")[0],
+        path: req.originalUrl.split('?')[0],
         status: res.statusCode,
         durationMs: Math.round(durationMs * 10) / 10,
         ...res.locals.logFields,

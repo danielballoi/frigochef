@@ -36,7 +36,7 @@ describe('GET /api/ready', () => {
 
 describe('percorsi sconosciuti', () => {
   it('404 in JSON', async () => {
-    const res = await request(appWith(undefined)).get('/api/non-esiste');
+    const res = await request(appWith({ isLoaded: () => true })).get('/api/non-esiste');
     expect(res.status).toBe(404);
     expect(res.body.error.code).toBe('NOT_FOUND');
   });

@@ -1,0 +1,1147 @@
+[
+  {
+    "nome": "pomodoro",
+    "categoria": "verdura",
+    "sinonimi": [
+      "pomodori",
+      "pomodorini",
+      "pomodoro ciliegino",
+      "pomodori ciliegini",
+      "pomodoro ramato",
+      "pachino"
+    ]
+  },
+  {
+    "nome": "passata di pomodoro",
+    "categoria": "verdura",
+    "sinonimi": [
+      "passata",
+      "salsa di pomodoro",
+      "pomodori pelati",
+      "pelati",
+      "polpa di pomodoro",
+      "sugo di pomodoro"
+    ]
+  },
+  {
+    "nome": "concentrato di pomodoro",
+    "categoria": "verdura",
+    "sinonimi": [
+      "doppio concentrato",
+      "triplo concentrato"
+    ]
+  },
+  {
+    "nome": "zucchine",
+    "categoria": "verdura",
+    "sinonimi": [
+      "zucchina",
+      "zucchino",
+      "zucchini"
+    ]
+  },
+  {
+    "nome": "melanzane",
+    "categoria": "verdura",
+    "sinonimi": [
+      "melanzana"
+    ]
+  },
+  {
+    "nome": "peperoni",
+    "categoria": "verdura",
+    "sinonimi": [
+      "peperone",
+      "peperone rosso",
+      "peperone giallo",
+      "peperone verde",
+      "peperoni rossi",
+      "peperoni gialli"
+    ]
+  },
+  {
+    "nome": "patate",
+    "categoria": "verdura",
+    "sinonimi": [
+      "patata"
+    ]
+  },
+  {
+    "nome": "carote",
+    "categoria": "verdura",
+    "sinonimi": [
+      "carota"
+    ]
+  },
+  {
+    "nome": "cipolla",
+    "categoria": "verdura",
+    "sinonimi": [
+      "cipolle",
+      "cipolla bianca",
+      "cipolla dorata",
+      "cipolla rossa",
+      "cipolle rosse"
+    ]
+  },
+  {
+    "nome": "cipollotto",
+    "categoria": "verdura",
+    "sinonimi": [
+      "cipollotti",
+      "cipolla novella",
+      "cipolle novelle"
+    ]
+  },
+  {
+    "nome": "scalogno",
+    "categoria": "verdura",
+    "sinonimi": [
+      "scalogni"
+    ]
+  },
+  {
+    "nome": "aglio",
+    "categoria": "verdura",
+    "sinonimi": [
+      "spicchio d'aglio",
+      "spicchi d'aglio",
+      "testa d'aglio"
+    ]
+  },
+  {
+    "nome": "sedano",
+    "categoria": "verdura",
+    "sinonimi": [
+      "costa di sedano",
+      "coste di sedano",
+      "gambo di sedano"
+    ]
+  },
+  {
+    "nome": "spinaci",
+    "categoria": "verdura",
+    "sinonimi": [
+      "spinacio",
+      "spinaci freschi",
+      "spinaci surgelati"
+    ]
+  },
+  {
+    "nome": "bietole",
+    "categoria": "verdura",
+    "sinonimi": [
+      "bietola",
+      "bieta",
+      "biete",
+      "coste"
+    ]
+  },
+  {
+    "nome": "funghi",
+    "categoria": "verdura",
+    "sinonimi": [
+      "fungo",
+      "champignon",
+      "funghi champignon",
+      "funghi porcini",
+      "porcini",
+      "funghi coltivati"
+    ]
+  },
+  {
+    "nome": "piselli",
+    "categoria": "verdura",
+    "sinonimi": [
+      "pisello",
+      "piselli surgelati",
+      "piselli freschi"
+    ]
+  },
+  {
+    "nome": "fagiolini",
+    "categoria": "verdura",
+    "sinonimi": [
+      "fagiolino",
+      "cornetti"
+    ]
+  },
+  {
+    "nome": "carciofi",
+    "categoria": "verdura",
+    "sinonimi": [
+      "carciofo"
+    ]
+  },
+  {
+    "nome": "cavolfiore",
+    "categoria": "verdura",
+    "sinonimi": [
+      "cavolfiori"
+    ]
+  },
+  {
+    "nome": "broccoli",
+    "categoria": "verdura",
+    "sinonimi": [
+      "broccolo",
+      "cime di broccolo"
+    ]
+  },
+  {
+    "nome": "verza",
+    "categoria": "verdura",
+    "sinonimi": [
+      "cavolo verza",
+      "cavolo cappuccio",
+      "cavolo",
+      "cavolo nero"
+    ]
+  },
+  {
+    "nome": "cime di rapa",
+    "categoria": "verdura",
+    "sinonimi": [
+      "rape",
+      "friarielli",
+      "broccoletti"
+    ]
+  },
+  {
+    "nome": "lattuga",
+    "categoria": "verdura",
+    "sinonimi": [
+      "insalata",
+      "insalata verde",
+      "lattuga romana",
+      "iceberg",
+      "misticanza",
+      "songino",
+      "valeriana"
+    ]
+  },
+  {
+    "nome": "rucola",
+    "categoria": "verdura",
+    "sinonimi": [
+      "rughetta"
+    ]
+  },
+  {
+    "nome": "radicchio",
+    "categoria": "verdura",
+    "sinonimi": [
+      "radicchio rosso",
+      "radicchio trevigiano",
+      "cicoria"
+    ]
+  },
+  {
+    "nome": "finocchio",
+    "categoria": "verdura",
+    "sinonimi": [
+      "finocchi"
+    ]
+  },
+  {
+    "nome": "porro",
+    "categoria": "verdura",
+    "sinonimi": [
+      "porri"
+    ]
+  },
+  {
+    "nome": "cetriolo",
+    "categoria": "verdura",
+    "sinonimi": [
+      "cetrioli"
+    ]
+  },
+  {
+    "nome": "zucca",
+    "categoria": "verdura",
+    "sinonimi": [
+      "zucca gialla",
+      "zucca delica"
+    ]
+  },
+  {
+    "nome": "asparagi",
+    "categoria": "verdura",
+    "sinonimi": [
+      "asparago"
+    ]
+  },
+  {
+    "nome": "olive",
+    "categoria": "verdura",
+    "sinonimi": [
+      "oliva",
+      "olive nere",
+      "olive verdi",
+      "olive taggiasche"
+    ]
+  },
+  {
+    "nome": "capperi",
+    "categoria": "verdura",
+    "sinonimi": [
+      "cappero",
+      "capperi sotto sale"
+    ]
+  },
+  {
+    "nome": "mais",
+    "categoria": "verdura",
+    "sinonimi": [
+      "mais in scatola",
+      "granturco"
+    ]
+  },
+  {
+    "nome": "limone",
+    "categoria": "frutta",
+    "sinonimi": [
+      "limoni",
+      "scorza di limone",
+      "succo di limone"
+    ]
+  },
+  {
+    "nome": "arancia",
+    "categoria": "frutta",
+    "sinonimi": [
+      "arance",
+      "succo d'arancia"
+    ]
+  },
+  {
+    "nome": "mela",
+    "categoria": "frutta",
+    "sinonimi": [
+      "mele",
+      "mela golden",
+      "mele renette"
+    ]
+  },
+  {
+    "nome": "pera",
+    "categoria": "frutta",
+    "sinonimi": [
+      "pere"
+    ]
+  },
+  {
+    "nome": "banana",
+    "categoria": "frutta",
+    "sinonimi": [
+      "banane"
+    ]
+  },
+  {
+    "nome": "fragole",
+    "categoria": "frutta",
+    "sinonimi": [
+      "fragola"
+    ]
+  },
+  {
+    "nome": "frutti di bosco",
+    "categoria": "frutta",
+    "sinonimi": [
+      "mirtilli",
+      "lamponi",
+      "more"
+    ]
+  },
+  {
+    "nome": "uvetta",
+    "categoria": "frutta",
+    "sinonimi": [
+      "uva passa",
+      "uva sultanina"
+    ]
+  },
+  {
+    "nome": "noci",
+    "categoria": "frutta",
+    "sinonimi": [
+      "noce",
+      "gherigli di noce"
+    ]
+  },
+  {
+    "nome": "pinoli",
+    "categoria": "frutta",
+    "sinonimi": [
+      "pinolo"
+    ]
+  },
+  {
+    "nome": "mandorle",
+    "categoria": "frutta",
+    "sinonimi": [
+      "mandorla",
+      "farina di mandorle"
+    ]
+  },
+  {
+    "nome": "nocciole",
+    "categoria": "frutta",
+    "sinonimi": [
+      "nocciola"
+    ]
+  },
+  {
+    "nome": "basilico",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "foglie di basilico"
+    ]
+  },
+  {
+    "nome": "prezzemolo",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "prezzemolo tritato"
+    ]
+  },
+  {
+    "nome": "rosmarino",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "rametto di rosmarino"
+    ]
+  },
+  {
+    "nome": "salvia",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "foglie di salvia"
+    ]
+  },
+  {
+    "nome": "origano",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "origano secco"
+    ]
+  },
+  {
+    "nome": "timo",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "timo fresco"
+    ]
+  },
+  {
+    "nome": "menta",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "foglie di menta"
+    ]
+  },
+  {
+    "nome": "alloro",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "foglia di alloro",
+      "foglie di alloro"
+    ]
+  },
+  {
+    "nome": "erba cipollina",
+    "categoria": "erbe e spezie",
+    "sinonimi": []
+  },
+  {
+    "nome": "peperoncino",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "peperoncini",
+      "peperoncino fresco",
+      "peperoncino secco",
+      "peperoncino in polvere"
+    ]
+  },
+  {
+    "nome": "noce moscata",
+    "categoria": "erbe e spezie",
+    "sinonimi": []
+  },
+  {
+    "nome": "cannella",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "cannella in polvere",
+      "stecca di cannella"
+    ]
+  },
+  {
+    "nome": "zafferano",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "pistilli di zafferano",
+      "bustina di zafferano"
+    ]
+  },
+  {
+    "nome": "paprica",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "paprika",
+      "paprica dolce"
+    ]
+  },
+  {
+    "nome": "pepe",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "pepe nero",
+      "pepe macinato"
+    ]
+  },
+  {
+    "nome": "sale",
+    "categoria": "erbe e spezie",
+    "sinonimi": [
+      "sale fino",
+      "sale grosso"
+    ]
+  },
+  {
+    "nome": "latte",
+    "categoria": "latticini",
+    "sinonimi": [
+      "latte intero",
+      "latte parzialmente scremato",
+      "latte scremato"
+    ]
+  },
+  {
+    "nome": "burro",
+    "categoria": "latticini",
+    "sinonimi": []
+  },
+  {
+    "nome": "panna",
+    "categoria": "latticini",
+    "sinonimi": [
+      "panna da cucina",
+      "panna fresca",
+      "panna liquida",
+      "panna da montare"
+    ]
+  },
+  {
+    "nome": "parmigiano",
+    "categoria": "latticini",
+    "sinonimi": [
+      "parmigiano reggiano",
+      "grana",
+      "grana padano",
+      "formaggio grattugiato",
+      "parmigiano grattugiato"
+    ]
+  },
+  {
+    "nome": "pecorino",
+    "categoria": "latticini",
+    "sinonimi": [
+      "pecorino romano",
+      "pecorino grattugiato"
+    ]
+  },
+  {
+    "nome": "mozzarella",
+    "categoria": "latticini",
+    "sinonimi": [
+      "mozzarelle",
+      "fiordilatte",
+      "fior di latte",
+      "mozzarella di bufala",
+      "bocconcini di mozzarella"
+    ]
+  },
+  {
+    "nome": "ricotta",
+    "categoria": "latticini",
+    "sinonimi": []
+  },
+  {
+    "nome": "mascarpone",
+    "categoria": "latticini",
+    "sinonimi": []
+  },
+  {
+    "nome": "stracchino",
+    "categoria": "latticini",
+    "sinonimi": [
+      "crescenza"
+    ]
+  },
+  {
+    "nome": "gorgonzola",
+    "categoria": "latticini",
+    "sinonimi": []
+  },
+  {
+    "nome": "scamorza",
+    "categoria": "latticini",
+    "sinonimi": [
+      "scamorza affumicata",
+      "provola"
+    ]
+  },
+  {
+    "nome": "fontina",
+    "categoria": "latticini",
+    "sinonimi": []
+  },
+  {
+    "nome": "provolone",
+    "categoria": "latticini",
+    "sinonimi": []
+  },
+  {
+    "nome": "yogurt",
+    "categoria": "latticini",
+    "sinonimi": [
+      "yogurt bianco",
+      "yogurt greco",
+      "yogurt naturale"
+    ]
+  },
+  {
+    "nome": "uova",
+    "categoria": "uova",
+    "sinonimi": [
+      "uovo",
+      "tuorli",
+      "tuorlo",
+      "albumi",
+      "albume"
+    ]
+  },
+  {
+    "nome": "pollo",
+    "categoria": "carne",
+    "sinonimi": [
+      "petto di pollo",
+      "cosce di pollo",
+      "sovracosce di pollo",
+      "fusi di pollo",
+      "pollo intero"
+    ]
+  },
+  {
+    "nome": "tacchino",
+    "categoria": "carne",
+    "sinonimi": [
+      "petto di tacchino",
+      "fesa di tacchino"
+    ]
+  },
+  {
+    "nome": "carne macinata",
+    "categoria": "carne",
+    "sinonimi": [
+      "macinato",
+      "macinato di manzo",
+      "macinato misto",
+      "carne trita"
+    ]
+  },
+  {
+    "nome": "manzo",
+    "categoria": "carne",
+    "sinonimi": [
+      "carne di manzo",
+      "fettine di manzo",
+      "bistecca",
+      "controfiletto",
+      "scottona"
+    ]
+  },
+  {
+    "nome": "vitello",
+    "categoria": "carne",
+    "sinonimi": [
+      "fettine di vitello",
+      "carne di vitello",
+      "girello di vitello",
+      "noce di vitello"
+    ]
+  },
+  {
+    "nome": "maiale",
+    "categoria": "carne",
+    "sinonimi": [
+      "lonza",
+      "lonza di maiale",
+      "braciole di maiale",
+      "braciola",
+      "costine di maiale",
+      "arista"
+    ]
+  },
+  {
+    "nome": "salsiccia",
+    "categoria": "carne",
+    "sinonimi": [
+      "salsicce",
+      "salsiccia di maiale"
+    ]
+  },
+  {
+    "nome": "prosciutto cotto",
+    "categoria": "salumi",
+    "sinonimi": [
+      "cotto"
+    ]
+  },
+  {
+    "nome": "prosciutto crudo",
+    "categoria": "salumi",
+    "sinonimi": [
+      "crudo"
+    ]
+  },
+  {
+    "nome": "pancetta",
+    "categoria": "salumi",
+    "sinonimi": [
+      "pancetta a cubetti",
+      "pancetta affumicata",
+      "pancetta tesa"
+    ]
+  },
+  {
+    "nome": "guanciale",
+    "categoria": "salumi",
+    "sinonimi": []
+  },
+  {
+    "nome": "speck",
+    "categoria": "salumi",
+    "sinonimi": []
+  },
+  {
+    "nome": "mortadella",
+    "categoria": "salumi",
+    "sinonimi": []
+  },
+  {
+    "nome": "salame",
+    "categoria": "salumi",
+    "sinonimi": []
+  },
+  {
+    "nome": "wurstel",
+    "categoria": "salumi",
+    "sinonimi": [
+      "salsicce di wurstel",
+      "würstel di pollo"
+    ]
+  },
+  {
+    "nome": "tonno",
+    "categoria": "pesce",
+    "sinonimi": [
+      "tonno in scatola",
+      "tonno sott'olio",
+      "tonno al naturale"
+    ]
+  },
+  {
+    "nome": "acciughe",
+    "categoria": "pesce",
+    "sinonimi": [
+      "acciuga",
+      "alici",
+      "alice",
+      "acciughe sott'olio"
+    ]
+  },
+  {
+    "nome": "salmone",
+    "categoria": "pesce",
+    "sinonimi": [
+      "filetto di salmone",
+      "tranci di salmone"
+    ]
+  },
+  {
+    "nome": "salmone affumicato",
+    "categoria": "pesce",
+    "sinonimi": []
+  },
+  {
+    "nome": "merluzzo",
+    "categoria": "pesce",
+    "sinonimi": [
+      "filetti di merluzzo",
+      "nasello",
+      "platessa",
+      "filetti di pesce bianco"
+    ]
+  },
+  {
+    "nome": "baccalà",
+    "categoria": "pesce",
+    "sinonimi": [
+      "stoccafisso"
+    ]
+  },
+  {
+    "nome": "gamberi",
+    "categoria": "pesce",
+    "sinonimi": [
+      "gambero",
+      "gamberetti",
+      "mazzancolle"
+    ]
+  },
+  {
+    "nome": "cozze",
+    "categoria": "pesce",
+    "sinonimi": [
+      "cozza"
+    ]
+  },
+  {
+    "nome": "vongole",
+    "categoria": "pesce",
+    "sinonimi": [
+      "vongola",
+      "lupini"
+    ]
+  },
+  {
+    "nome": "calamari",
+    "categoria": "pesce",
+    "sinonimi": [
+      "calamaro",
+      "totani",
+      "anelli di calamaro"
+    ]
+  },
+  {
+    "nome": "ceci",
+    "categoria": "legumi",
+    "sinonimi": [
+      "ceci in scatola",
+      "ceci secchi"
+    ]
+  },
+  {
+    "nome": "fagioli",
+    "categoria": "legumi",
+    "sinonimi": [
+      "fagioli borlotti",
+      "borlotti",
+      "fagioli cannellini",
+      "cannellini",
+      "fagioli in scatola"
+    ]
+  },
+  {
+    "nome": "lenticchie",
+    "categoria": "legumi",
+    "sinonimi": [
+      "lenticchia"
+    ]
+  },
+  {
+    "nome": "pasta",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "spaghetti",
+      "penne",
+      "fusilli",
+      "maccheroni",
+      "rigatoni",
+      "linguine",
+      "farfalle",
+      "mezze maniche",
+      "orecchiette",
+      "bucatini",
+      "paccheri",
+      "tagliatelle",
+      "pastina",
+      "ditalini",
+      "pasta corta",
+      "pasta lunga"
+    ]
+  },
+  {
+    "nome": "lasagne",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "sfoglie per lasagne",
+      "fogli di lasagna"
+    ]
+  },
+  {
+    "nome": "gnocchi",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "gnocchi di patate"
+    ]
+  },
+  {
+    "nome": "tortellini",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "tortellini freschi",
+      "cappelletti"
+    ]
+  },
+  {
+    "nome": "riso",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "riso carnaroli",
+      "riso arborio",
+      "riso vialone nano",
+      "riso parboiled"
+    ]
+  },
+  {
+    "nome": "farro",
+    "categoria": "dispensa",
+    "sinonimi": []
+  },
+  {
+    "nome": "orzo",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "orzo perlato"
+    ]
+  },
+  {
+    "nome": "cous cous",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "couscous",
+      "cuscus"
+    ]
+  },
+  {
+    "nome": "polenta",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "farina di mais",
+      "farina per polenta",
+      "polenta istantanea"
+    ]
+  },
+  {
+    "nome": "farina",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "farina 00",
+      "farina 0",
+      "farina bianca"
+    ]
+  },
+  {
+    "nome": "maizena",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "amido di mais"
+    ]
+  },
+  {
+    "nome": "pane",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "pane raffermo",
+      "pane casereccio",
+      "pagnotta",
+      "filone",
+      "pane in cassetta",
+      "pancarré"
+    ]
+  },
+  {
+    "nome": "pangrattato",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "pan grattato",
+      "pane grattugiato"
+    ]
+  },
+  {
+    "nome": "piadine",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "piadina"
+    ]
+  },
+  {
+    "nome": "pasta sfoglia",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "rotolo di pasta sfoglia"
+    ]
+  },
+  {
+    "nome": "lievito di birra",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "lievito di birra fresco",
+      "lievito di birra secco"
+    ]
+  },
+  {
+    "nome": "lievito per dolci",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "lievito vanigliato",
+      "lievito in polvere"
+    ]
+  },
+  {
+    "nome": "brodo vegetale",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "brodo",
+      "dado",
+      "dado vegetale",
+      "brodo di carne",
+      "dado da brodo"
+    ]
+  },
+  {
+    "nome": "olio d'oliva",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "olio",
+      "olio extravergine",
+      "olio extravergine d'oliva",
+      "olio evo",
+      "olio di oliva"
+    ]
+  },
+  {
+    "nome": "olio di semi",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "olio di girasole",
+      "olio di arachidi",
+      "olio per friggere"
+    ]
+  },
+  {
+    "nome": "aceto",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "aceto di vino",
+      "aceto di vino bianco",
+      "aceto di vino rosso"
+    ]
+  },
+  {
+    "nome": "aceto balsamico",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "balsamico"
+    ]
+  },
+  {
+    "nome": "vino bianco",
+    "categoria": "dispensa",
+    "sinonimi": []
+  },
+  {
+    "nome": "vino rosso",
+    "categoria": "dispensa",
+    "sinonimi": []
+  },
+  {
+    "nome": "maionese",
+    "categoria": "dispensa",
+    "sinonimi": []
+  },
+  {
+    "nome": "acqua",
+    "categoria": "dispensa",
+    "sinonimi": [
+      "acqua naturale"
+    ]
+  },
+  {
+    "nome": "zucchero",
+    "categoria": "dolci e colazione",
+    "sinonimi": [
+      "zucchero semolato",
+      "zucchero di canna"
+    ]
+  },
+  {
+    "nome": "zucchero a velo",
+    "categoria": "dolci e colazione",
+    "sinonimi": []
+  },
+  {
+    "nome": "miele",
+    "categoria": "dolci e colazione",
+    "sinonimi": []
+  },
+  {
+    "nome": "marmellata",
+    "categoria": "dolci e colazione",
+    "sinonimi": [
+      "confettura",
+      "marmellata di albicocche"
+    ]
+  },
+  {
+    "nome": "cacao",
+    "categoria": "dolci e colazione",
+    "sinonimi": [
+      "cacao amaro",
+      "cacao in polvere"
+    ]
+  },
+  {
+    "nome": "cioccolato fondente",
+    "categoria": "dolci e colazione",
+    "sinonimi": [
+      "cioccolato",
+      "cioccolata",
+      "tavoletta di cioccolato"
+    ]
+  },
+  {
+    "nome": "biscotti secchi",
+    "categoria": "dolci e colazione",
+    "sinonimi": [
+      "biscotti",
+      "frollini"
+    ]
+  },
+  {
+    "nome": "savoiardi",
+    "categoria": "dolci e colazione",
+    "sinonimi": []
+  },
+  {
+    "nome": "caffè",
+    "categoria": "dolci e colazione",
+    "sinonimi": [
+      "caffè espresso",
+      "moka"
+    ]
+  },
+  {
+    "nome": "vanillina",
+    "categoria": "dolci e colazione",
+    "sinonimi": [
+      "vaniglia",
+      "bacca di vaniglia",
+      "estratto di vaniglia"
+    ]
+  }
+]

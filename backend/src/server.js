@@ -1,6 +1,7 @@
 import { loadConfig, ConfigError } from './config.js';
 import { createLogger } from './logger.js';
 import { createApp } from './app.js';
+import { createRecipeRepository } from './recipes/recipeRepository.js';
 
 const SHUTDOWN_TIMEOUT_MS = 5000;
 
@@ -17,11 +18,20 @@ function start() {
   }
 
   const logger = createLogger(config.logLevel);
-  const app = createApp({ config, logger });
+  const repository = createRecipeRepository();
+  const app = createApp({ config, logger, repository });
 
   const server = app.listen(config.port, () => {
-    logger.info({ port: config.port }, 'server avviato');
+    logger.info({ port: config.port, visionProvider: config.visionProvider }, 'server avviato');
   });
+
+  repository
+    .load()
+    .then((counts) => logger.info(counts, 'archivio ricette caricato'))
+    .catch((err) => {
+      logger.fatal({ err: err.message }, 'impossibile caricare l\'archivio ricette');
+      process.exit(1);
+    });
 
   let stopping = false;
   const shutdown = (signal) => {

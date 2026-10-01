@@ -1,8 +1,10 @@
 import express from 'express';
 import helmet from 'helmet';
 import { requestLogger } from './logger.js';
-import { errorHandler, notFoundHandler } from './errors.js';
+import { errorHandler, notFoundHandler, HttpError } from './errors.js';
 import { healthRouter } from './routes/health.js';
+import { configRouter } from './routes/config.js';
+import { recipesRouter } from './routes/recipes.js';
 
 /**
  * Crea l'applicazione Express. Le dipendenze arrivano da fuori,
@@ -19,11 +21,20 @@ export function createApp({ config, logger, repository }) {
 
   const api = express.Router();
   api.use(healthRouter({ isReady: () => Boolean(repository?.isLoaded()) }));
+  api.use(configRouter({ config }));
+
+  // Le route seguenti hanno bisogno dell'archivio caricato.
+  api.use((_req, _res, next) => {
+    if (!repository?.isLoaded()) {
+      return next(new HttpError(503, 'NOT_READY', 'Il servizio si sta avviando, riprova tra poco.'));
+    }
+    next();
+  });
+  api.use(recipesRouter({ repository }));
   app.use('/api', api);
 
   app.use(notFoundHandler);
   app.use(errorHandler(logger));
 
-  app.locals.config = config;
   return app;
 }
