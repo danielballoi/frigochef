@@ -1,0 +1,34 @@
+{
+  "name": "frigochef-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "FrigoChef - API: riconoscimento ingredienti e ricerca ricette",
+  "type": "module",
+  "main": "src/server.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "validate:data": "node scripts/validate-data.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "helmet": "^8.3.0",
+    "multer": "^2.4.0",
+    "pino": "^10.3.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.11.0",
+    "globals": "^17.13.0",
+    "supertest": "^7.3.0",
+    "vitest": "^5.0.3"
+  }
+}
