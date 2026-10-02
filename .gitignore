@@ -5,3 +5,6 @@ coverage/
 .env
 *.log
 .DS_Store
+
+# Foto vere del frigo e riferimento per la valutazione: mai in git (privacy)
+test-foto/
