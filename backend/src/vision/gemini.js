@@ -4,7 +4,8 @@ import { buildPrompt, isAbort, parseIngredientNames } from './common.js';
 
 export const GEMINI_BASE_URL = 'https://generativelanguage.googleapis.com';
 
-const CHECK_TIMEOUT_MS = 3000;
+// Più largo di Ollama (3 s): è un servizio su Internet e il primo collegamento TLS può superare i 3 s.
+const CHECK_TIMEOUT_MS = 5000;
 
 // Margine ampio: una risposta tipica è di 30-60 token.
 const MAX_OUTPUT_TOKENS = 512;
