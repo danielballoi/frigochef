@@ -1,9 +1,11 @@
-// Valuta il riconoscimento con Ollama VERO sulle foto di test-foto/.
+// Valuta il riconoscimento con un modello VERO (Gemini o Ollama) sulle foto di test-foto/.
 //
-//   node scripts/valuta-modello.js [--model qwen3-vl:4b] [--dir ../test-foto] [--json risultati.json]
+//   node --env-file-if-exists=.env scripts/valuta-modello.js [--provider gemini|ollama] [--model nome]
+//        [--dir ../test-foto] [--json risultati.json]
 //
 // Il riferimento è test-foto/atteso.json: { "foto1.jpg": ["uova", "latte"], ... }
 // (nomi del vocabolario o sinonimi). Foto e riferimento non vanno mai in git.
+// Con gemini la chiave arriva da GEMINI_API_KEY (backend/.env) e non viene mai stampata.
 import { readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
@@ -13,6 +15,7 @@ import { createVisionProvider } from '../src/vision/index.js';
 
 const { values: args } = parseArgs({
   options: {
+    provider: { type: 'string', default: 'gemini' },
     model: { type: 'string' },
     dir: { type: 'string', default: path.resolve(import.meta.dirname, '../../test-foto') },
     json: { type: 'string' },
@@ -20,11 +23,17 @@ const { values: args } = parseArgs({
   },
 });
 
+const modelVariable = { gemini: 'GEMINI_MODEL', ollama: 'VISION_MODEL' }[args.provider];
+if (!modelVariable) {
+  console.error('--provider deve essere gemini oppure ollama');
+  process.exit(1);
+}
+
 const config = loadConfig({
   ...process.env,
-  VISION_PROVIDER: 'ollama',
+  VISION_PROVIDER: args.provider,
   VISION_TIMEOUT_MS: args.timeout,
-  ...(args.model ? { VISION_MODEL: args.model } : {}),
+  ...(args.model ? { [modelVariable]: args.model } : {}),
   LOG_LEVEL: 'silent',
 });
 
@@ -34,7 +43,7 @@ const vision = createVisionProvider(config, repository);
 
 const health = await vision.check();
 if (!health.ok) {
-  console.error(`Ollama non pronto per ${config.visionModel}: ${health.reason}`);
+  console.error(`${args.provider} non pronto per ${vision.model}: ${health.reason}`);
   process.exit(1);
 }
 
@@ -43,7 +52,9 @@ const files = (await readdir(args.dir)).filter((f) => /\.(jpe?g|png|webp)$/i.tes
 const missingRef = files.filter((f) => !expectedRaw[f]);
 if (missingRef.length) console.warn(`Attenzione: senza riferimento in atteso.json: ${missingRef.join(', ')}`);
 
+// Memoria occupata dal modello: ha senso solo con Ollama (Gemini gira nel cloud).
 async function modelMemory() {
+  if (args.provider !== 'ollama') return null;
   try {
     const res = await fetch(`${config.ollamaUrl}/api/ps`);
     const data = await res.json();
@@ -97,7 +108,7 @@ const invented = sum('invented');
 const missed = sum('missed');
 const ok = rows.filter((r) => !r.error);
 const summary = {
-  model: config.visionModel,
+  model: vision.model,
   photos: rows.length,
   errors: rows.length - ok.length,
   correct,
