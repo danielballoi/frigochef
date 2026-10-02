@@ -29,11 +29,18 @@ const withDefault = (schema, fallback) =>
     .transform((value) => (value === undefined || value === '' ? fallback : value))
     .pipe(schema);
 
+export const DEFAULT_GEMINI_MODEL = 'gemini-3.5-flash-lite';
+
 const envSchema = z.object({
   PORT: intInRange('PORT', 1, 65535, 3000),
-  VISION_PROVIDER: withDefault(z.enum(['mock', 'ollama']), 'mock'),
+  VISION_PROVIDER: withDefault(z.enum(['mock', 'ollama', 'gemini']), 'mock'),
   OLLAMA_URL: withDefault(z.url({ protocol: /^https?$/ }), 'http://localhost:11434'),
   VISION_MODEL: withDefault(z.string().min(1), 'qwen3-vl:4b'),
+  GEMINI_API_KEY: withDefault(z.string(), ''),
+  GEMINI_MODEL: withDefault(
+    z.string().regex(/^[a-z0-9][a-z0-9.-]*$/, 'GEMINI_MODEL deve essere un nome di modello, es. gemini-3.5-flash-lite'),
+    DEFAULT_GEMINI_MODEL,
+  ),
   VISION_TIMEOUT_MS: intInRange('VISION_TIMEOUT_MS', 1000, 600000, 90000),
   MAX_IMAGE_MB: intInRange('MAX_IMAGE_MB', 1, 50, 5),
   MAX_PHOTOS: intInRange('MAX_PHOTOS', 1, 20, 8),
@@ -43,6 +50,10 @@ const envSchema = z.object({
     z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent']),
     'info',
   ),
+}).superRefine((e, ctx) => {
+  if (e.VISION_PROVIDER === 'gemini' && !e.GEMINI_API_KEY) {
+    ctx.addIssue({ code: 'custom', path: ['GEMINI_API_KEY'], message: 'GEMINI_API_KEY è obbligatoria con VISION_PROVIDER=gemini' });
+  }
 });
 
 export class ConfigError extends Error {
@@ -75,11 +86,12 @@ export function loadConfig(env = process.env) {
     throw new ConfigError(issues);
   }
   const e = result.data;
-  return Object.freeze({
+  const config = {
     port: e.PORT,
     visionProvider: e.VISION_PROVIDER,
     ollamaUrl: e.OLLAMA_URL.replace(/\/+$/, ''),
     visionModel: e.VISION_MODEL,
+    geminiModel: e.GEMINI_MODEL,
     visionTimeoutMs: e.VISION_TIMEOUT_MS,
     maxImageMb: e.MAX_IMAGE_MB,
     maxImageBytes: e.MAX_IMAGE_MB * 1024 * 1024,
@@ -87,5 +99,8 @@ export function loadConfig(env = process.env) {
     pantryDefault: parsePantry(e.PANTRY_DEFAULT),
     rateLimitPerMin: e.RATE_LIMIT_PER_MIN,
     logLevel: e.LOG_LEVEL,
-  });
+  };
+  // Segreto non enumerabile: resta fuori da JSON.stringify, dai log e dagli spread della config.
+  Object.defineProperty(config, 'geminiApiKey', { value: e.GEMINI_API_KEY, enumerable: false });
+  return Object.freeze(config);
 }

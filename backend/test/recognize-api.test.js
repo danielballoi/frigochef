@@ -138,6 +138,43 @@ describe('GET /api/health/model', () => {
     expect(res.status).toBe(200);
     expect(res.body).toMatchObject({ provider: 'ollama', model: 'qwen3-vl:2b' });
   });
+
+  it('con provider gemini legge i metadati del modello (Gemini simulato)', async () => {
+    const fetch = vi.fn(async () => new Response(JSON.stringify({ name: 'models/gemini-3.5-flash-lite' })));
+    const config = testConfig({ VISION_PROVIDER: 'gemini', GEMINI_API_KEY: 'chiave-finta' });
+    const vision = createVisionProvider(config, repository, { fetch });
+    const app = createApp({ config, logger: silentLogger, repository, vision });
+    const res = await request(app).get('/api/health/model');
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchObject({ provider: 'gemini', model: 'gemini-3.5-flash-lite' });
+  });
+});
+
+describe('POST /api/recognize con Gemini simulato', () => {
+  function geminiApp(fetch) {
+    const config = testConfig({ VISION_PROVIDER: 'gemini', GEMINI_API_KEY: 'chiave-finta' });
+    const vision = createVisionProvider(config, repository, { fetch });
+    return createApp({ config, logger: silentLogger, repository, vision });
+  }
+  const send = (app) => request(app).post('/api/recognize').attach('image', JPEG, { filename: 'a.jpg', contentType: 'image/jpeg' });
+
+  it('restituisce gli ingredienti del vocabolario, senza i nomi scartati', async () => {
+    const text = JSON.stringify({ ingredients: ['Uova', 'yogurt greco', 'bibita gassata'] });
+    const fetch = vi.fn(async () => new Response(JSON.stringify({ candidates: [{ content: { parts: [{ text }] } }] })));
+    const res = await send(geminiApp(fetch));
+    expect(res.status).toBe(200);
+    expect(res.body.ingredients).toEqual(['uova', 'yogurt']);
+    expect(res.body).not.toHaveProperty('discarded');
+    expect(res.body.model).toBe('gemini-3.5-flash-lite');
+  });
+
+  it('429 del piano gratuito arriva al telefono con un messaggio chiaro', async () => {
+    const fetch = vi.fn(async () => new Response(JSON.stringify({ error: { code: 429, status: 'RESOURCE_EXHAUSTED' } }), { status: 429 }));
+    const res = await send(geminiApp(fetch));
+    expect(res.status).toBe(429);
+    expect(res.body.error.code).toBe('VISION_QUOTA');
+    expect(res.body.error.message).toContain('piano gratuito');
+  });
 });
 
 describe('detectImageType', () => {

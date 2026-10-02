@@ -27,6 +27,15 @@ function start() {
     logger.info({ port: config.port, visionProvider: config.visionProvider, visionModel: vision.model }, 'server avviato');
   });
 
+  // Chiave non valida o modello inesistente: lo si scopre subito nei log, senza bloccare l'avvio
+  // (la rete può mancare solo per poco; /api/health/model ripete il controllo).
+  if (config.visionProvider !== 'mock') {
+    vision.check().then((result) => {
+      if (result.ok) logger.info({ visionModel: vision.model }, 'modello di visione raggiungibile');
+      else logger.warn({ visionModel: vision.model, reason: result.reason }, 'modello di visione non pronto');
+    });
+  }
+
   repository
     .load()
     .then((counts) => logger.info(counts, 'archivio ricette caricato'))

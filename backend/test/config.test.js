@@ -48,6 +48,28 @@ describe('loadConfig', () => {
     });
   });
 
+  it('gemini: modello predefinito e chiave letta dalla variabile', () => {
+    const config = loadConfig({ VISION_PROVIDER: 'gemini', GEMINI_API_KEY: 'chiave-finta' });
+    expect(config).toMatchObject({ visionProvider: 'gemini', geminiModel: 'gemini-3.5-flash-lite' });
+    expect(config.geminiApiKey).toBe('chiave-finta');
+    expect(loadConfig({ GEMINI_MODEL: 'gemini-3.8-flash' }).geminiModel).toBe('gemini-3.8-flash');
+  });
+
+  it('gemini: la chiave non compare nella config serializzata o copiata', () => {
+    const config = loadConfig({ VISION_PROVIDER: 'gemini', GEMINI_API_KEY: 'chiave-finta' });
+    expect(JSON.stringify(config)).not.toContain('chiave-finta');
+    expect({ ...config }).not.toHaveProperty('geminiApiKey');
+  });
+
+  it('gemini: errore se manca la chiave', () => {
+    for (const key of [undefined, '', '   ']) {
+      expect(() => loadConfig({ VISION_PROVIDER: 'gemini', GEMINI_API_KEY: key })).toThrow(
+        'GEMINI_API_KEY è obbligatoria con VISION_PROVIDER=gemini',
+      );
+    }
+    expect(() => loadConfig({ VISION_PROVIDER: 'mock' })).not.toThrow();
+  });
+
   it('tratta le stringhe vuote come valori mancanti', () => {
     expect(loadConfig({ PORT: '', VISION_PROVIDER: '' })).toMatchObject({ port: 3000, visionProvider: 'mock' });
   });
@@ -58,6 +80,7 @@ describe('loadConfig', () => {
     [{ VISION_PROVIDER: 'openai' }, 'VISION_PROVIDER'],
     [{ OLLAMA_URL: 'non-un-url' }, 'OLLAMA_URL'],
     [{ OLLAMA_URL: 'ftp://ollama' }, 'OLLAMA_URL'],
+    [{ GEMINI_MODEL: '../altro' }, 'GEMINI_MODEL'],
     [{ VISION_TIMEOUT_MS: '-1' }, 'VISION_TIMEOUT_MS'],
     [{ MAX_IMAGE_MB: '0' }, 'MAX_IMAGE_MB'],
     [{ MAX_PHOTOS: '1.5' }, 'MAX_PHOTOS'],
