@@ -53,7 +53,7 @@ Progetto del portfolio di Daniel Balloi: il valore dimostrato è la parte **DevO
 
 **RF-07 — Stato del servizio.** `/api/health` (il processo è vivo), `/api/ready` (pronto a servire: archivio caricato), `/api/health/model` (il modello risponde). Servono a Kubernetes (probe) e alla pipeline.
 
-**RF-08 — Privacy.** Le foto **non vengono salvate**: restano in memoria solo il tempo dell'analisi. Nessun cookie di tracciamento. Informativa breve nella pagina.
+**RF-08 — Privacy.** Le foto vengono inviate a **Google Gemini** per l'analisi (ADR-011); FrigoChef **non le salva**: restano in memoria solo il tempo dell'analisi. Nessun cookie di tracciamento. Informativa breve nella pagina: "le foto vengono inviate a Google Gemini per l'analisi; FrigoChef non le salva".
 
 ## 5. Archivio ricette
 
