@@ -2,17 +2,17 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import { fitWithin, resizeToJpeg, ImageReadError, MAX_SIDE } from './image.js';
 
 describe('fitWithin', () => {
-  it('riduce il lato lungo a 1280 px mantenendo le proporzioni', () => {
-    expect(fitWithin(4032, 3024)).toEqual({ width: 1280, height: 960 });
-    expect(fitWithin(3024, 4032)).toEqual({ width: 960, height: 1280 });
+  it('riduce il lato lungo a 768 px mantenendo le proporzioni', () => {
+    expect(fitWithin(4032, 3024)).toEqual({ width: 768, height: 576 });
+    expect(fitWithin(3024, 4032)).toEqual({ width: 576, height: 768 });
   });
 
   it('non ingrandisce le foto piccole', () => {
-    expect(fitWithin(800, 600)).toEqual({ width: 800, height: 600 });
+    expect(fitWithin(640, 480)).toEqual({ width: 640, height: 480 });
   });
 
-  it('usa 1280 come predefinito', () => {
-    expect(MAX_SIDE).toBe(1280);
+  it('usa 768 come predefinito', () => {
+    expect(MAX_SIDE).toBe(768);
   });
 });
 
@@ -42,9 +42,9 @@ describe('resizeToJpeg', () => {
     const blob = await resizeToJpeg(new File(['x'], 'foto.heic', { type: 'image/heic' }));
 
     expect(blob.type).toBe('image/jpeg');
-    expect(canvas.width).toBe(1280);
-    expect(canvas.height).toBe(960);
-    expect(context.drawImage).toHaveBeenCalledWith(bitmap, 0, 0, 1280, 960);
+    expect(canvas.width).toBe(768);
+    expect(canvas.height).toBe(576);
+    expect(context.drawImage).toHaveBeenCalledWith(bitmap, 0, 0, 768, 576);
     expect(canvas.toBlob).toHaveBeenCalledWith(expect.any(Function), 'image/jpeg', expect.any(Number));
     expect(bitmap.close).toHaveBeenCalled();
   });
