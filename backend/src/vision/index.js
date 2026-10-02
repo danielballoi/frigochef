@@ -12,7 +12,6 @@ export function createVisionProvider(config, repository, { fetch } = {}) {
       url: config.ollamaUrl,
       model: config.visionModel,
       timeoutMs: config.visionTimeoutMs,
-      getIngredientNames,
       normalizeIngredients: (names) => repository.normalizeIngredients(names),
       fetch,
     });

@@ -10,13 +10,18 @@ const RESPONSE_SCHEMA = {
   required: ['ingredients'],
 };
 
-export function buildPrompt(ingredientNames) {
+// Risposta breve: bastano per una ventina di alimenti e tengono basso il tempo su CPU.
+const MAX_RESPONSE_TOKENS = 150;
+
+// Prompt corto e SENZA vocabolario: l'elenco di 141 nomi costava ~1500 token di prompt
+// (minuti su CPU) e i modelli piccoli finivano per ricopiarlo. Il confronto con il
+// vocabolario (nomi e sinonimi) lo fa il backend, che scarta ciò che non riconosce.
+export function buildPrompt() {
   return [
-    'Guarda la foto dell\'interno di un frigorifero (un ripiano, un cassetto o lo sportello).',
-    'Elenca gli alimenti che vedi con certezza, scegliendo i nomi SOLO da questo elenco:',
-    ingredientNames.join(', '),
-    'Non inventare: se non sei sicuro di un alimento, non metterlo.',
-    'Rispondi solo con JSON nel formato {"ingredients": ["nome1", "nome2"]}.',
+    'Questa è la foto dell\'interno di un frigorifero.',
+    'Elenca gli alimenti visibili, con il nome generico in italiano (senza marca), uno per voce.',
+    'Non inventare: se non sei sicuro, non metterlo.',
+    'Rispondi solo con JSON: {"ingredients": ["nome1", "nome2"]}.',
   ].join('\n');
 }
 
@@ -32,7 +37,6 @@ export function createOllamaProvider({
   url,
   model,
   timeoutMs,
-  getIngredientNames,
   normalizeIngredients,
   fetch = globalThis.fetch,
 }) {
@@ -56,11 +60,11 @@ export function createOllamaProvider({
             model,
             stream: false,
             format: RESPONSE_SCHEMA,
-            options: { temperature: 0 },
+            options: { temperature: 0, num_predict: MAX_RESPONSE_TOKENS },
             messages: [
               {
                 role: 'user',
-                content: buildPrompt(getIngredientNames()),
+                content: buildPrompt(),
                 images: [imageBuffer.toString('base64')],
               },
             ],
@@ -97,8 +101,9 @@ export function createOllamaProvider({
         throw new HttpError(502, 'VISION_BAD_RESPONSE', 'Il modello ha dato una risposta non leggibile. Riprova.', { cause: err });
       }
 
-      const { known } = normalizeIngredients(names.filter((name) => typeof name === 'string'));
-      return { ingredients: known, model };
+      const { known, unknown } = normalizeIngredients(names.filter((name) => typeof name === 'string'));
+      // `discarded`: nomi del modello assenti dal vocabolario (per log e valutazione, non per l'API)
+      return { ingredients: known, model, discarded: unknown };
     },
 
     async check() {

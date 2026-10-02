@@ -19,7 +19,6 @@ function provider(fetch, overrides = {}) {
     url: 'http://ollama.test:11434',
     model: 'qwen3-vl:4b',
     timeoutMs: 1000,
-    getIngredientNames: () => vocabulary.map((v) => v.nome),
     normalizeIngredients: (names) => normalizeIngredients(names, index),
     fetch,
     ...overrides,
@@ -27,7 +26,7 @@ function provider(fetch, overrides = {}) {
 }
 
 describe('provider ollama (Ollama simulato)', () => {
-  it('invia immagine in base64, vocabolario nel prompt e format JSON', async () => {
+  it('invia immagine in base64, prompt corto, format JSON e risposta limitata', async () => {
     const fetch = vi.fn(async () => jsonResponse({ message: { content: '{"ingredients":["uova"]}' } }));
     await provider(fetch).recognize(image);
 
@@ -39,14 +38,15 @@ describe('provider ollama (Ollama simulato)', () => {
     expect(body.stream).toBe(false);
     expect(body.format).toMatchObject({ type: 'object', required: ['ingredients'] });
     expect(body.messages[0].images).toEqual([image.toString('base64')]);
-    expect(body.messages[0].content).toContain('pomodoro, uova, latte');
+    expect(body.messages[0].content).toBe(buildPrompt());
+    expect(body.options).toEqual({ temperature: 0, num_predict: 150 });
   });
 
   it('normalizza i sinonimi, scarta ciò che non è nel vocabolario e toglie i doppioni', async () => {
     const content = JSON.stringify({ ingredients: ['Pomodorini', 'uovo', 'uova', 'caviale', 42, 'pomodori'] });
     const fetch = vi.fn(async () => jsonResponse({ message: { content } }));
     const result = await provider(fetch).recognize(image);
-    expect(result).toEqual({ ingredients: ['pomodoro', 'uova'], model: 'qwen3-vl:4b' });
+    expect(result).toEqual({ ingredients: ['pomodoro', 'uova'], model: 'qwen3-vl:4b', discarded: ['caviale'] });
   });
 
   it('accetta anche un array JSON semplice', async () => {
@@ -99,8 +99,11 @@ describe('provider ollama (Ollama simulato)', () => {
     expect(await provider(down).check()).toEqual({ ok: false, reason: 'Ollama non raggiungibile' });
   });
 
-  it('il prompt elenca il vocabolario', () => {
-    expect(buildPrompt(['uova', 'latte'])).toContain('uova, latte');
+  it('il prompt è corto e non contiene il vocabolario', () => {
+    const prompt = buildPrompt();
+    expect(prompt).toContain('alimenti visibili');
+    expect(prompt).not.toContain('pomodoro');
+    expect(prompt.length).toBeLessThan(400);
   });
 });
 
