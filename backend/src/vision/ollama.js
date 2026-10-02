@@ -1,4 +1,5 @@
 import { HttpError } from '../errors.js';
+import { buildPrompt, isAbort, parseIngredientNames } from './common.js';
 
 const CHECK_TIMEOUT_MS = 3000;
 
@@ -12,22 +13,6 @@ const RESPONSE_SCHEMA = {
 
 // Risposta breve: bastano per una ventina di alimenti e tengono basso il tempo su CPU.
 const MAX_RESPONSE_TOKENS = 150;
-
-// Prompt corto e SENZA vocabolario: l'elenco di 141 nomi costava ~1500 token di prompt
-// (minuti su CPU) e i modelli piccoli finivano per ricopiarlo. Il confronto con il
-// vocabolario (nomi e sinonimi) lo fa il backend, che scarta ciò che non riconosce.
-export function buildPrompt() {
-  return [
-    'Questa è la foto dell\'interno di un frigorifero.',
-    'Elenca gli alimenti visibili, con il nome generico in italiano (senza marca), uno per voce.',
-    'Non inventare: se non sei sicuro, non metterlo.',
-    'Rispondi solo con JSON: {"ingredients": ["nome1", "nome2"]}.',
-  ].join('\n');
-}
-
-function isAbort(err) {
-  return err?.name === 'AbortError' || err?.name === 'TimeoutError';
-}
 
 /**
  * Provider che usa l'API HTTP di Ollama (/api/chat) con un modello di visione.
@@ -91,9 +76,7 @@ export function createOllamaProvider({
       let names;
       try {
         const data = await response.json();
-        const parsed = JSON.parse(data?.message?.content ?? '');
-        names = Array.isArray(parsed) ? parsed : parsed?.ingredients;
-        if (!Array.isArray(names)) throw new Error('campo ingredients mancante');
+        names = parseIngredientNames(data?.message?.content);
       } catch (err) {
         if (timeoutSignal.aborted) {
           throw new HttpError(504, 'VISION_TIMEOUT', 'Il riconoscimento ha impiegato troppo tempo. Riprova.', { cause: err });
@@ -101,7 +84,7 @@ export function createOllamaProvider({
         throw new HttpError(502, 'VISION_BAD_RESPONSE', 'Il modello ha dato una risposta non leggibile. Riprova.', { cause: err });
       }
 
-      const { known, unknown } = normalizeIngredients(names.filter((name) => typeof name === 'string'));
+      const { known, unknown } = normalizeIngredients(names);
       // `discarded`: nomi del modello assenti dal vocabolario (per log e valutazione, non per l'API)
       return { ingredients: known, model, discarded: unknown };
     },

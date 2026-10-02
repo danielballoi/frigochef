@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
-import { createOllamaProvider, buildPrompt } from '../src/vision/ollama.js';
+import { createOllamaProvider } from '../src/vision/ollama.js';
+import { buildPrompt } from '../src/vision/common.js';
 import { createMockProvider } from '../src/vision/mock.js';
 import { buildVocabularyIndex, normalizeIngredients } from '../src/recipes/normalize.js';
 
