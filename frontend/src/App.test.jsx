@@ -328,6 +328,6 @@ describe('privacy', () => {
   it('mostra l\'informativa sulle foto', () => {
     installFakeBackend();
     render(<App />);
-    expect(screen.getByText(/le foto non vengono salvate/)).toBeInTheDocument();
+    expect(screen.getByText(/le foto vengono inviate a Google Gemini per l'analisi; FrigoChef non le salva/)).toBeInTheDocument();
   });
 });
