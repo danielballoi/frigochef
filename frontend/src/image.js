@@ -2,7 +2,7 @@
 // Così anche le foto HEIC dell'iPhone arrivano al server come JPEG leggeri.
 
 // 768 px: Gemini conta l'immagine a token fissi (~1100 sia a 768 sia a 1280 px) e sulle foto
-// di prova riconosce gli stessi ingredienti; l'upload è circa un terzo (ADR-008).
+// di prova riconosce gli stessi ingredienti; l'upload è circa un terzo (ADR-011).
 export const MAX_SIDE = 768;
 export const JPEG_QUALITY = 0.85;
 
