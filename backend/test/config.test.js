@@ -95,6 +95,11 @@ describe('loadConfig', () => {
     }
   });
 
+  it('anche i messaggi generati da zod sono in italiano', () => {
+    expect(() => loadConfig({ VISION_PROVIDER: 'openai', OLLAMA_URL: 'non-un-url' })).toThrow(/non valid/i);
+    expect(() => loadConfig({ VISION_PROVIDER: 'openai' })).not.toThrow(/invalid|expected/i);
+  });
+
   it('elenca tutti gli errori insieme', () => {
     try {
       loadConfig({ PORT: 'x', MAX_PHOTOS: '0' });

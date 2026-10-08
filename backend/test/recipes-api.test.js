@@ -110,6 +110,16 @@ describe('POST /api/recipes', () => {
     expect(res.body.error.code).toBe('INVALID_INPUT');
   });
 
+  it.each([
+    [{ ingredients: [''] }],
+    [{ ingredients: [42] }],
+    [{ ingredients: 'uova' }],
+  ])('messaggio di errore in italiano per %o', async (body) => {
+    const res = await request(app).post('/api/recipes').send(body);
+    expect(res.body.error.message).not.toMatch(/invalid|expected|received|too small/i);
+    expect(res.body.error.message).toMatch(/non valid|troppo|atteso|attes/i);
+  });
+
   it('400 per JSON non valido', async () => {
     const res = await request(app)
       .post('/api/recipes')

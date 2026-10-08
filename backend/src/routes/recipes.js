@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { z } from 'zod';
+import { z } from '../zod.js';
 import { HttpError } from '../errors.js';
 import { findRecipes } from '../recipes/findRecipes.js';
 

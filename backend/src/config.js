@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from './zod.js';
 
 export const DEFAULT_PANTRY = "sale,pepe,olio d'oliva,zucchero,pasta,riso,farina,aceto,acqua";
 

@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from '../zod.js';
 import { ingredientKey } from './normalize.js';
 
 export const MIN_RECIPES = 150;
