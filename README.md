@@ -26,13 +26,14 @@ dall'archivio locale, ordinate per ingredienti mancanti.
 
 ## Avvio in locale (senza Docker)
 
-Serve **Node.js 22** (`nvm use` legge `.nvmrc`).
+Serve **Node.js 22** (`nvm use` legge `.nvmrc`). Le dipendenze si installano con `npm ci`, che usa
+esattamente le versioni di `package-lock.json` senza modificarlo.
 
 ### 1. Backend in modalità `mock` (senza modello)
 
 ```bash
 cd backend
-npm install
+npm ci
 npm run dev            # http://localhost:3000, VISION_PROVIDER=mock è il predefinito
 ```
 
@@ -53,7 +54,7 @@ In un altro terminale:
 
 ```bash
 cd frontend
-npm install
+npm ci
 npm run dev            # http://localhost:5173, le chiamate /api vanno al backend tramite il proxy di Vite
 ```
 
@@ -80,6 +81,7 @@ curl localhost:3000/api/health/model    # 200 se chiave e modello sono validi (n
 curl -F image=@foto.jpg localhost:3000/api/recognize
 ```
 
+Il frontend non cambia: se `npm run dev` del frontend è già acceso, basta ricaricare la pagina.
 Il modello predefinito è `gemini-3.5-flash-lite` (`GEMINI_MODEL` per cambiarlo). Senza chiave, con
 `VISION_PROVIDER=gemini` il backend non parte. Oltre i limiti del piano gratuito risponde 429 con il tempo
 di attesa.
