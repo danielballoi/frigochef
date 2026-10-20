@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frigochef-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frigochef-frontend
+  template:
+    metadata:
+      labels:
+        app: frigochef-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: frigochef-frontend:dev
+          ports:
+            - containerPort: 8080
