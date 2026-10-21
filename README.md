@@ -148,7 +148,7 @@ flowchart LR
 ### Limiti noti
 
 - Il cluster usa ancora le immagini locali `:dev`: le immagini su GHCR (v0.1.0) esistono ma i manifest non le usano ancora.
-- Niente probe, requests/limits e monitoraggio.
+- Niente monitoraggio (Prometheus/Grafana) e niente HPA. Probe e limiti sono presenti solo sul backend.
 - Secret creato a mano (in futuro Sealed Secrets o External Secrets).
 - Il tunnel Cloudflare è temporaneo e serve solo per i test dal telefono.
 
