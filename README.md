@@ -136,7 +136,7 @@ flowchart LR
 | Immagini Docker | `backend/Dockerfile`, `frontend/Dockerfile` | multi-stage, utente non root, HEALTHCHECK sul backend |
 | Avvio locale | `docker-compose.yml` | |
 | CI | `.github/workflows/ci.yml` | test e lint a ogni push |
-| Rilascio | `.github/workflows/release.yml` | build e push su GHCR da tag (pronto, non ancora provato) |
+| Rilascio | `.github/workflows/release.yml` | build e push su GHCR da tag (provato con il tag v0.1.0) |
 | Kubernetes | `k8s/` | Kustomize: `kubectl apply -k k8s/` |
 | GitOps | `argocd/application.yaml` | sync automatico, prune, selfHeal |
 
@@ -147,7 +147,7 @@ flowchart LR
 
 ### Limiti noti
 
-- Immagini locali con tag `:dev`, non ancora pubblicate dal workflow di rilascio.
+- Il cluster usa ancora le immagini locali `:dev`: le immagini su GHCR (v0.1.0) esistono ma i manifest non le usano ancora.
 - Niente probe, requests/limits e monitoraggio.
 - Secret creato a mano (in futuro Sealed Secrets o External Secrets).
 - Il tunnel Cloudflare è temporaneo e serve solo per i test dal telefono.
