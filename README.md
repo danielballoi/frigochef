@@ -4,7 +4,7 @@ Web app per telefono (iPhone e Android): fotografi i ripiani del frigo, un model
 riconosce gli ingredienti, correggi la lista e l'app ti propone ricette dal suo archivio.
 
 È un progetto di portfolio **DevOps**: questo repository contiene il codice dell'app; container, pipeline,
-Kubernetes e GitOps sono costruiti a parte (vedi [`docs/per-il-devops.md`](docs/per-il-devops.md)).
+Kubernetes e GitOps sono descritti nella sezione "Infrastruttura e DevOps" più sotto (dettagli in [`docs/per-il-devops.md`](docs/per-il-devops.md)).
 
 - Requisiti: [`docs/analisi-funzionale.md`](docs/analisi-funzionale.md)
 - Scelte progettuali: [`docs/decisioni.md`](docs/decisioni.md)
@@ -117,6 +117,40 @@ cd frontend && npm test && npm run lint && npm run build
 ```
 
 I test non usano la rete, Gemini né Ollama: il modello è simulato.
+
+## Infrastruttura e DevOps
+
+```mermaid
+flowchart LR
+  U[Browser] --> T[Traefik Ingress]
+  T --> F[Frontend Nginx]
+  F -->|/api| B[Backend Node.js]
+  C[ConfigMap] --> B
+  S[Secret] --> B
+  G[GitHub repo] --> A[Argo CD]
+  A -->|sincronizza k8s/| K[Cluster k3d]
+```
+
+| Cosa | Dove | Note |
+|---|---|---|
+| Immagini Docker | `backend/Dockerfile`, `frontend/Dockerfile` | multi-stage, utente non root, HEALTHCHECK sul backend |
+| Avvio locale | `docker-compose.yml` | |
+| CI | `.github/workflows/ci.yml` | test e lint a ogni push |
+| Rilascio | `.github/workflows/release.yml` | build e push su GHCR da tag (pronto, non ancora provato) |
+| Kubernetes | `k8s/` | Kustomize: `kubectl apply -k k8s/` |
+| GitOps | `argocd/application.yaml` | sync automatico, prune, selfHeal |
+
+### Scelte e problemi incontrati
+
+- Il Service del backend si chiama `backend` perché `nginx.conf` del frontend lo raggiunge con quel nome DNS.
+- Il Secret con la chiave Gemini non è in Git: si crea a mano con `kubectl create secret generic`.
+
+### Limiti noti
+
+- Immagini locali con tag `:dev`, non ancora pubblicate dal workflow di rilascio.
+- Niente probe, requests/limits e monitoraggio.
+- Secret creato a mano (in futuro Sealed Secrets o External Secrets).
+- Il tunnel Cloudflare è temporaneo e serve solo per i test dal telefono.
 
 ## Privacy
 
