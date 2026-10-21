@@ -1,5 +1,5 @@
-apiVersion: argoproj.io/v1alpha1   # il "tipo di linguaggio": Application è un oggetto che Argo CD ha aggiunto a Kubernetes
-kind: Application                   # cosa stai creando
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
