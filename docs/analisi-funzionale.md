@@ -12,7 +12,7 @@ Progetto del portfolio di Daniel Balloi: il valore dimostrato è la parte **DevO
 | App utile e semplice da provare | da iPhone o Android: foto → ingredienti → ricette in meno di 1 minuto, senza istruzioni |
 | **Costo zero** | nessun servizio a pagamento, nessuna carta di credito, nessuna chiave API |
 | Dimostrare competenze DevOps diverse da Balloi e dal portfolio | Kubernetes, GitOps (Argo CD), modello AI in container, esposizione sicura con tunnel |
-| Dimostrabile ai colloqui | video degli episodi + prova dal vivo dal telefono del selezionatore quando il PC è acceso |
+| Dimostrabile | video degli episodi + prova dal vivo dal telefono del selezionatore quando il PC è acceso |
 
 ## 2. Vincoli
 
@@ -131,9 +131,9 @@ Telefono (iPhone / Android) → https://…trycloudflare.com
 
 | Parte | Chi |
 |---|---|
-| Codice dell'app: frontend PWA, backend Express, archivio ricette, dialogo con il modello, test | **Claude Code** |
-| Dockerfile, pipeline GitHub Actions, manifest Kubernetes, Kustomize, Argo CD, tunnel, probe, limiti, diagnosi | **Daniel**, guidato con domande e indizi |
-| Revisione, domande da colloquio, documentazione del percorso | Daniel con l'assistente |
+| Codice dell'app: frontend PWA, backend Express, archivio ricette, dialogo con il modello, test | Sviluppato con il supporto di un assistente AI |
+| Dockerfile, pipeline GitHub Actions, manifest Kubernetes, Kustomize, Argo CD, tunnel, probe, limiti, diagnosi | Daniel, con un assistente AI per spiegazioni e revisione |
+| Revisione e documentazione del percorso | Daniel |
 
 ## 9. Competenze DevOps che il progetto allena
 
@@ -152,8 +152,8 @@ Telefono (iPhone / Android) → https://…trycloudflare.com
 
 ```
 frigochef/
-├── frontend/          React + Vite (PWA)          ← Claude Code
-├── backend/           Node.js + Express + ricette ← Claude Code
+├── frontend/          React + Vite (PWA)
+├── backend/           Node.js + Express + ricette
 ├── deploy/            manifest Kubernetes         ← Daniel
 │   ├── base/          (Kustomize)
 │   └── overlays/local/
@@ -180,7 +180,7 @@ Account e ricette preferite; filtri (vegetariano, senza glutine, tempo); inglese
 ## 13. Piano
 
 1. **Verifica dell'ambiente** (Daniel): installare Ollama, provare `qwen3-vl:4b` e `qwen3-vl:2b` su foto vere, scegliere.
-2. **App** (Claude Code): backend e frontend funzionanti in locale, con modalità `mock` e con Ollama.
+2. **App**: backend e frontend funzionanti in locale, con modalità `mock` e con Ollama.
 3. **Container e pipeline** (Daniel): Dockerfile, Docker Compose, GitHub Actions, immagini su GHCR.
 4. **Kubernetes** (Daniel): cluster k3d, manifest, Ingress, probe, PVC.
 5. **GitOps** (Daniel): Argo CD collegato al repository.
