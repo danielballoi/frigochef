@@ -30,7 +30,7 @@ spec:
               memory: 256Mi
           readinessProbe:
             httpGet:
-              path: /api/ready
+              path: /api/sbagliato
               port: 3000
             initialDelaySeconds: 5
             periodSeconds: 10
